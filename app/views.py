@@ -11,6 +11,8 @@ from flask_login import login_user, logout_user, current_user, login_required
 from app.forms import LoginForm
 from app.models import UserProfile
 from werkzeug.security import check_password_hash
+from app.models import UserProfile
+from app.forms import LoginForm
 
 ###
 # Routing for your application.
@@ -67,6 +69,12 @@ def load_user(id):
 # The functions below should be applicable to all Flask apps.
 ###
 
+@app.route("logout")
+@login_required
+def logout():
+    logout_user
+    flash('You have successfully logged out. Goodbye!')
+    return redirect(url_for('home'))
 
 @app.route('/<file_name>.txt')
 def send_text_file(file_name):

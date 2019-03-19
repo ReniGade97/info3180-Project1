@@ -1,7 +1,19 @@
 {% extends "base.html" %}
 
 {% block main %}
-<h1 class="page-header">Lab 5 Starter Code</h1>
-<p class="lead">Use this starter template for Lab 5<br/>
-All you get are these files and mostly barebones HTML/CSS files.</p>
+<h1 class="page-header">Home</h1>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="alert alert-success">
+      <ul class="flashes">
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+{% endwith %}
+
+<p class="lead">Welcome to the home page for our flask app<br/> </p>
 {% endblock %}

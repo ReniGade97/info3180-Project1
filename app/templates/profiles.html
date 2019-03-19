@@ -1,14 +1,28 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% block main %}
 
-{%block main %}
-    <h1>Profiles</h1>
-    <br/>
-    <div>
-        <!--<form action="{{ url_for('profiles') }}" method="post"  enctype="application/json">
-            <button class="btn btn-lg btn-info submit-btn" type="submit">POST</button>
-        </form>-->
+<h1> Profiles </h1>
+{% include 'flash_messages.html' %}
+
+{% for user in users %}
+<div class = "grid-container">
+    <div class = "photo-container">
+        <img src = "{{url_for('static',filename = 'uploads/' + user.photo + '.jpg')}}">
     </div>
-    {% for profile in profile %}
-        {% include 'individualprofile.html' %}
-    {% endfor %}
+    <div class = "user-info-container">
+        <h6>{{user.first_name}} {{user.last_name}}</h6>
+        <p><img src = "{{url_for('static',filename = 'icons/per.png')}}"   height = '30' width = '30'>{{user.gender}}</p>
+        <p><img src = "{{url_for('static',filename = 'icons/loc.png')}}" height = '30' width = '30'>{{user.location}}</p>
+    </div>
+    <div class = "view-profile-button">
+        <a href = "{{url_for('userProfile',userid = user.id)}}">
+            <button id =>View Profile</button>
+        </a>
+    </div>
+</div>
+<br>
+{% endfor %}
+
 {% endblock %}
+    <form method = "POST"    action = "{{ url_for('profile') }}" enctype="multipart/form-data"> 
+    

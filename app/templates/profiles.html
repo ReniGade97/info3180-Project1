@@ -6,23 +6,26 @@
 
 {% for user in users %}
 <div class = "grid-container">
+    
     <div class = "photo-container">
-        <img src = "{{url_for('static',filename = 'uploads/' + user.photo + '.jpg')}}">
+        <img src = "{{url_for('static', filename = 'uploads/' + user.photo + '.png')}}">
     </div>
+    
     <div class = "user-info-container">
-        <h6>{{user.first_name}} {{user.last_name}}</h6>
-        <p><img src = "{{url_for('static',filename = 'icons/per.png')}}"   height = '30' width = '30'>{{user.gender}}</p>
-        <p><img src = "{{url_for('static',filename = 'icons/loc.png')}}" height = '30' width = '30'>{{user.location}}</p>
+        <h6> {{ user.first_name }} {{ user.last_name }} </h6>
+        <p> <img src = "{{url_for('static', filename = 'icons/person.png')}}"   height = '30' width = '30'>{{user.gender}}</p>
+        <p> <img src = "{{url_for('static', filename = 'icons/location.png')}}" height = '30' width = '30'>{{user.location}}</p>
     </div>
-    <div class = "view-profile-button">
-        <a href = "{{url_for('userProfile',userid = user.id)}}">
-            <button id =>View Profile</button>
+    
+    <div class = "profiles-buttons">
+        <a href = "{{url_for('userProfile', userid = user.id)}}">
+            <button> View Profile </button>
         </a>
     </div>
+    
 </div>
 <br>
 {% endfor %}
 
 {% endblock %}
-    <form method = "POST"    action = "{{ url_for('profile') }}" enctype="multipart/form-data"> 
     

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block main %}
+{% include 'flash_messages.html' %}
+
+<div class = "individual">
+    <div class = "profile-photo">
+        <img src = "{{ url_for('static', filename = "uploads/" + user.photo + '.png' )}}">
+    </div>
+    
+    <div class = "profile">
+        <h2>    {{ profile.first_name }} {{ profile.last_name }}</h2>
+        <br>
+        <p> <img src = "{{ url_for('static', filename = "icons/email.png" )}}" height = '40' width = '40'> {{ user.email }} </p>
+        <br>
+        <p> <img src = "{{ url_for('static', filename = "icons/location.png" )}}" height = '40' width = '40'> {{ user.location }} </p>
+        <br>
+        <p> <img src = "{{ url_for('static', filename = "icons/calendar.png" )}}" height = '40' width = '40'> {{ user.created_on }} </p>
+        <br>
+        <h3> About Me </h3>
+        <p> {{ profile.biography }}</p>
+        <br>
+    </div>
+
+    <div class = "individual-profile-buttons">
+            <button id = "send-btn" type = "submit"> Send Message </button>
+            <button id = "follow-btn"> Follow </button>
+    </form>
+
+    </div>
+</div>

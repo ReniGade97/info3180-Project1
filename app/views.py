@@ -43,7 +43,7 @@ def profile():
             photo.save(os.path.join(app.config['UPLOAD FOLDER'], filename))
             
         user = UserProfile(first_name='first_name', last_name='last_name', gender='gender',
-        email='email', location='location', biography='biography')
+        email='email', location='location', biography='biography', photo='photo', created_on='created_on')
         db.session.add(user)
         db.session.commit()
     return render_template('profile.html', form = form)
